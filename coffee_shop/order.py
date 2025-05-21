@@ -45,6 +45,17 @@ if TYPE_CHECKING:
             raise ValueError("Customer must be a Customer instance")
         self._customer = value
 
+        
+    @property
+    def customer(self) -> Customer:
+        return self._customer
+
+    @customer.setter
+    def customer(self, value: Customer) -> None:
+        if not hasattr(value, '_orders'):
+            raise ValueError("Customer must be a Customer instance")
+        self._customer = value
+
 
 
 
