@@ -30,6 +30,27 @@ class Coffee:
             raise ValueError("Name must be a string")
         if len(value) < 3:
             raise ValueError("Name must be at least 3 characters long")
+        
+        
+    def orders(self) -> List[Order]:
+        return self._orders
+
+    def customers(self) -> List[Customer]:
+        
+        from .customer import Customer
+        return list({order.customer for order in self._orders})
+    
+    
+    def num_orders(self) -> int:
+        return len(self._orders)
+
+    def average_price(self) -> float:
+        if not self._orders:
+            return 0.0
+        total_price = sum(order.price for order in self._orders)
+        return round(total_price / len(self._orders), 2)
+
+
 
 
 
