@@ -5,7 +5,7 @@ from coffee_shop.coffee import Coffee
 
 class TestOrder:
     def test_order_creation(self):
-        customer = Customer("Dave")
+        customer = Customer("David")
         coffee = Coffee("Cappuccino")
         order = Order(customer, coffee, 4.5)
         assert order.price == 4.5

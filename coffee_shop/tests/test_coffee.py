@@ -6,7 +6,7 @@ from coffee_shop.order import Order
 class TestCoffee:
     def test_average_price(self):
         coffee = Coffee("Latte")
-        customer = Customer("Charlie")
+        customer = Customer("Alice")
     
         Order(customer, coffee, 5.0)
         Order(customer, coffee, 7.0)

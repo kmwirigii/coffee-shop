@@ -15,7 +15,7 @@ class TestCustomer:
             Customer("ThisNameIsWayTooLong")
     
     def test_create_order(self):
-        customer = Customer("Bob")
+        customer = Customer("Gilly")  
         coffee = Coffee("Latte")
         order = customer.create_order(coffee, 5.0)
         assert order in customer.orders()
