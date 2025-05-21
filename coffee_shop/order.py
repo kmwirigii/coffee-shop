@@ -34,4 +34,17 @@ if TYPE_CHECKING:
             raise AttributeError("Cannot change order price after creation")
         self._price = value
 
+        
+    @property
+    def customer(self) -> Customer:
+        return self._customer
+
+    @customer.setter
+    def customer(self, value: Customer) -> None:
+        if not hasattr(value, '_orders'):
+            raise ValueError("Customer must be a Customer instance")
+        self._customer = value
+
+
+
 
