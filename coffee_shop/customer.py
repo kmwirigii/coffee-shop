@@ -22,3 +22,17 @@ class Customer:
             raise ValueError("Name must be between 1-15 characters")
         self._name = value
 
+            def orders(self) -> List[Order]:
+        return self._orders
+
+    def coffees(self) -> List[Coffee]:
+        
+        return list({order.coffee for order in self._orders})
+
+    def create_order(self, coffee: Coffee, price: float) -> Order:
+        if not isinstance(coffee, Coffee):
+            raise ValueError("Must provide Coffee instance")
+        new_order = Order(self, coffee, price)
+        self._orders.append(new_order)
+        return new_order
+
