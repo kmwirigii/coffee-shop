@@ -35,4 +35,25 @@ class Customer:
         new_order = Order(self, coffee, price)
         self._orders.append(new_order)
         return new_order
+    
+    
+    @classmethod
+    def most_aficionado(cls, coffee: Coffee) -> Customer | None:
+        if not isinstance(coffee, Coffee):
+            raise ValueError("Must provide Coffee instance")
+
+        if not coffee.orders():
+            return None
+
+        
+        spending: Dict[Customer, float] = {}
+        for order in coffee.orders():
+            spending[order.customer] = spending.get(order.customer, 0) + order.price
+
+      
+        return max(spending.items(), key=lambda item: item[1])[0]
+    
+    from .coffee import Coffee
+from .order import Order
+
 
