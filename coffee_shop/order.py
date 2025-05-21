@@ -5,22 +5,23 @@ if TYPE_CHECKING:
     from .customer import Customer
     from .coffee import Coffee
 
-    class Order:
-    # Class-level list to store all orders
+class Order:
+   
     all: list[Order] = []
 
     def __init__(self, customer: Customer, coffee: Coffee, price: float) -> None:
-        
+       
         self.customer = customer
         self.coffee = coffee
         self.price = price
 
-        
         customer._orders.append(self)
         coffee._orders.append(self)
         Order.all.append(self)
 
-           @property
+  
+
+    @property
     def price(self) -> float:
         return self._price
 
@@ -34,7 +35,8 @@ if TYPE_CHECKING:
             raise AttributeError("Cannot change order price after creation")
         self._price = value
 
-        
+
+
     @property
     def customer(self) -> Customer:
         return self._customer
@@ -45,17 +47,15 @@ if TYPE_CHECKING:
             raise ValueError("Customer must be a Customer instance")
         self._customer = value
 
-        
+
+
+
     @property
-    def customer(self) -> Customer:
-        return self._customer
+    def coffee(self) -> Coffee:
+        return self._coffee
 
-    @customer.setter
-    def customer(self, value: Customer) -> None:
+    @coffee.setter
+    def coffee(self, value: Coffee) -> None:
         if not hasattr(value, '_orders'):
-            raise ValueError("Customer must be a Customer instance")
-        self._customer = value
-
-
-
-
+            raise ValueError("Coffee must be a Coffee instance")
+        self._coffee = value
